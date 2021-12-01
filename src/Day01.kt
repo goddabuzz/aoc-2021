@@ -1,22 +1,14 @@
 fun main() {
 
-    val input = readInput("Day01").map { it.toInt() }
-    val step1 = input.filterIndexed { index, s ->
-        index != 0 && input[index - 1] < s
-    }
-    check(step1.size == 1342)
-    println(step1.size)
+    fun part1(input: List<Int>): Int = input.filterWithPrev { prev, current -> prev < current }.size
 
-    val test = readInput("Day01").map { it.toInt() }
-    val step2 = test.mapIndexedNotNull { index, i ->
-        if (index < test.size - 2) {
-            i + test[index + 1] + test[index + 2]
+    fun part2(input: List<Int>): Int = input.mapIndexedNotNull { index, i ->
+        if (index < input.size - 2) {
+            i + input[index + 1] + input[index + 2]
         } else null
-    }
+    }.filterWithPrev { prev, current -> prev < current }.size
 
-    val step2Result = step2.filterIndexed { index, s ->
-        index != 0 && step2[index - 1] < s
-    }
-    check(step2Result.size == 1378)
-    println(step2Result.size)
+    val input = readInput("Day01").map { it.toInt() }
+    result(part1(input), 1342)
+    result(part2(input), 1378)
 }
