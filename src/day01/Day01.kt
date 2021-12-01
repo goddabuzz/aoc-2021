@@ -6,12 +6,7 @@ import result
 fun main() {
 
     fun part1(input: List<Int>): Int = input.zipWithNext { a, b -> a < b }.filter { it }.size
-
-    fun part2(input: List<Int>): Int = part1(input.mapIndexedNotNull { index, i ->
-        if (index < input.size - 2) {
-            i + input[index + 1] + input[index + 2]
-        } else null
-    })
+    fun part2(input: List<Int>): Int = part1(input.windowed(3) { it.sum() })
 
     val testInput = readInput("day01/Day01_test").map { it.toInt() }
     result(part1(testInput), 7)
