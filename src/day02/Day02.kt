@@ -6,11 +6,10 @@ import result
 fun main() {
 
     fun part1(input: List<String>): Int {
-        val forward = input.filter { it.contains("forward") }.sumOf { it.removePrefix("forward ").toInt() }
-        val down = input.filter { it.contains("down") }.sumOf { it.removePrefix("down ").toInt() }
-        val up = input.filter { it.contains("up") }.sumOf { it.removePrefix("up ").toInt() }
-
-        return (down - up) * forward
+        val groups = input.map { it.split(" ") }
+            .groupBy { it[0] }
+            .mapValues { it -> it.value.map { it[1].toInt() } }
+        return (groups["down"]!!.sum() - groups["up"]!!.sum()) * groups["forward"]!!.sum()
     }
 
     fun part2(input: List<String>): Int {
@@ -18,20 +17,18 @@ fun main() {
         var aim = 0
         var depth = 0;
 
-        input.forEach { s ->
-            when (s.first().toString()) {
-                "u" -> {
-                    aim -= s.removePrefix("up ").toInt()
-                }
-                "d" -> {
-                    aim += s.removePrefix("down ").toInt()
-                }
-                "f" -> {
-                    forward += s.removePrefix("forward ").toInt()
-                    depth += s.removePrefix("forward ").toInt() * aim
+        input.map { it.split(" ") }
+            .map { Pair(it[0], it[1].toInt()) }
+            .forEach {
+                when (it.first) {
+                    "up" -> aim -= it.second
+                    "down" -> aim += it.second
+                    "forward" -> {
+                        forward += it.second
+                        depth += it.second * aim
+                    }
                 }
             }
-        }
         return depth * forward
     }
 
@@ -41,5 +38,5 @@ fun main() {
 
     val input = readInput("day02/Day02")
     result(part1(input), 1728414)
-    result(part2(input), 1378)
+    result(part2(input), 1765720035)
 }
