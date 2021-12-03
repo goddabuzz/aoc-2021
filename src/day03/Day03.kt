@@ -1,4 +1,4 @@
-package day02
+package day03
 
 import readInput
 import result
@@ -36,11 +36,11 @@ fun main() {
         return depth * forward
     }
 
-    val testInput = readInput("day02/Day02_test")
+    val testInput = readInput("day03/Day03_test")
     result(part1(testInput), 150)
     result(part2(testInput), 900)
 
-    val input = readInput("day02/Day02")
+    val input = readInput("day03/Day03")
     result(part1(input), 1728414)
     result(part2(input), 1765720035)
 }
