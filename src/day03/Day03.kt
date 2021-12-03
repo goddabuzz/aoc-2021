@@ -6,41 +6,59 @@ import result
 fun main() {
 
     fun part1(input: List<String>): Int {
-        val groups = input
-            .map {
-                val (a, b) = it.split(" ")
-                Pair(a, b.toInt())
+        val result = input[0].mapIndexed { index, _ ->
+            val count = input.count { it[index].toString() == "0" }
+            if (count > input.size / 2) "0" else "1"
+        }
+
+        val gamma = result.joinToString("") { if (it == "0") "1" else "0" }.toInt(2)
+        val epsilon = result.joinToString("").toInt(2)
+        return gamma * epsilon
+    }
+
+    fun calcOxygen(input: List<String>): Int {
+        var result = input
+        for (i in input[0].indices) {
+            val size = result.size
+            if (size == 1) break
+
+            val c1 = result.count { it[i].toString() == "1" }
+            val c1IsMostCommon = c1 >= size.toDouble() / 2
+
+            result = result.filter {
+                it[i].toString() == "1" && c1IsMostCommon || it[i].toString() == "0" && !c1IsMostCommon
             }
-            .groupBy { it.first }
-            .mapValues { it.value.map { pair -> pair.second } }
-        return (groups["down"]!!.sum() - groups["up"]!!.sum()) * groups["forward"]!!.sum()
+        }
+        return result.last().toInt(2)
+    }
+
+    fun calcCo2(input: List<String>): Int {
+        var result = input
+        for (i in input[0].indices) {
+            val size = result.size
+            if (size == 1) break
+
+            val c0 = result.count { it[i].toString() == "0" }
+            val c0IsLeastCommon = c0 <= size.toDouble() / 2
+
+            result = result.filter {
+                it[i].toString() == "1" && !c0IsLeastCommon || it[i].toString() == "0" && c0IsLeastCommon
+            }
+        }
+        return result.last().toInt(2)
     }
 
     fun part2(input: List<String>): Int {
-        var forward = 0
-        var aim = 0
-        var depth = 0;
-
-        input.map { it.split(" ") }
-            .map { Pair(it[0], it[1].toInt()) }
-            .forEach {
-                when (it.first) {
-                    "up" -> aim -= it.second
-                    "down" -> aim += it.second
-                    "forward" -> {
-                        forward += it.second
-                        depth += it.second * aim
-                    }
-                }
-            }
-        return depth * forward
+        val oxygen = calcOxygen(input)
+        val co2 = calcCo2(input)
+        return oxygen * co2
     }
 
     val testInput = readInput("day03/Day03_test")
-    result(part1(testInput), 150)
-    result(part2(testInput), 900)
+    result(part1(testInput), 198)
+    result(part2(testInput), 230)
 
     val input = readInput("day03/Day03")
-    result(part1(input), 1728414)
-    result(part2(input), 1765720035)
+    result(part1(input), 693486)
+    result(part2(input), 3379326)
 }
