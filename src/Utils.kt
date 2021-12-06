@@ -16,3 +16,8 @@ fun result(result: Int, expected: Int) {
     println(result)
     check(result == expected)
 }
+
+fun resultLong(result: Long, expected: Long) {
+    println(result)
+    check(result == expected)
+}
