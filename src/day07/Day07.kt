@@ -8,12 +8,11 @@ fun main() {
 
     fun part1(input: List<String>): Int {
         val mov = input[0].split(",").filter { it.isNotBlank() }.map { it.toInt() }
-        //val max = mov.maxOf { it }
         var min = Integer.MAX_VALUE
         for (i in 0..mov.size) {
             var c = 0
             mov.forEach {
-                c += kotlin.math.abs(i - it);
+                c += abs(i - it);
                 if (c > min) return@forEach
             }
             min = if (c < min) c else min
@@ -23,7 +22,6 @@ fun main() {
 
     fun part2(input: List<String>): Int {
         val mov = input[0].split(",").filter { it.isNotBlank() }.map { it.toInt() }
-        //val max = mov.maxOf { it }
         var min = Integer.MAX_VALUE
         for (i in 0..mov.size) {
             var c = 0
@@ -42,5 +40,5 @@ fun main() {
 
     val input = readInput("day07/Day07")
     result(part1(input), 340987)
-    result(part2(input), 1378)
+    result(part2(input), 96987874)
 }
