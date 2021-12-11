@@ -9,44 +9,39 @@ fun main() {
     result(part1(readInput("day10/Day10")), 318081)
 
     resultLong(part2(readInput("day10/Day10_test")), 288957)
-    resultLong(part2(readInput("day10/Day10")), 1198704)
+    resultLong(part2(readInput("day10/Day10")), 4361305341)
 }
 
 fun part1(input: List<String>): Int {
     return verifyLines(input)
-        .filter { it.length == 1 }
-        .map {
-            when (it[0].toString()) {
+        .filter { it.length == 1 }.sumOf {
+            (when (it[0].toString()) {
                 ")" -> 3
                 "]" -> 57
                 "}" -> 1197
                 ">" -> 25137
                 else -> 0
-            }
-        }.sum()
+            }).toInt()
+        }
 }
 
 fun part2(readInput: List<String>): Long {
     val lines = verifyLines(readInput)
         .filter { it.length != 1 }
         .map {
-            val sum = it.reversed()
-                .map {
-                    c -> when (c.toString()) {
-                        "(" -> 1
-                        "[" -> 2
-                        "{" -> 3
-                        "<" -> 4
-                        else -> 0
+            it.reversed()
+                .map { c ->
+                    when (c.toString()) {
+                        "(" -> 1L
+                        "[" -> 2L
+                        "{" -> 3L
+                        "<" -> 4L
+                        else -> 0L
                     }
-                }
-                var res: Long = 0;
-                sum.forEach {
-                    res = res * 5 + it.toLong()
-                }
-            res
-        }.sortedDescending()
-    return lines[(lines.size/2)]
+                }.reduce { acc, l -> acc * 5L + l }
+        }
+        .sortedDescending()
+    return lines[(lines.size / 2)]
 }
 
 fun verifyLines(input: List<String>): List<String> {
