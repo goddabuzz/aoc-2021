@@ -5,28 +5,45 @@ import result
 import java.util.*
 
 fun main() {
+    // p1
+    result(solve(readInput("Day15/Day15_test"), 1), 40)
+    result(solve(readInput("Day15/Day15"), 1), 595)
 
-    result(part1(readInput("Day15/Day15_test")), 40)
-    result(part1(readInput("Day15/Day15")), 40)
+    // p2
+    result(solve(readInput("Day15/Day15_test"), 5), 315)
+    result(solve(readInput("Day15/Day15"), 5), 595)
 }
+
 data class Position(val x: Int, val y: Int, var distance: Int) : Comparable<Position> {
     override fun compareTo(other: Position): Int {
         return if (distance > other.distance) 1 else -1
     }
 }
 
-fun part1(input: List<String>): Int {
+fun solve(input: List<String>, factor: Int): Int {
 
     val map = input.map { it.split("").filter { s -> s.isNotEmpty() }.map { c -> c.toInt() } }
 
+    val rows = map.size
+    val cols = map[0].size
+
     val queue = PriorityQueue<Position>()
-    val checked = Array(map.size) { IntArray(map[0].size) { 0 } }
+    val distanceMap = Array(rows*factor) { IntArray(cols * factor) { 0 } }
+    val riskMap = Array(rows*factor) { IntArray(cols * factor) { 0 } }
 
     val x = listOf(-1, 0, 0, 1)
     val y = listOf(0, -1, 1, 0)
 
-    checked[0][0] = map[0][0]
+    distanceMap[0][0] = map[0][0]
     queue.add(Position(0, 0, map[0][0]))
+
+    fun calculateRisk(dY: Int, dX: Int): Int {
+        val originalValue = map[dY % rows][dX % cols]
+        val add = (dY / rows) + (dX / cols)
+
+        val risk = (originalValue + add) % 9
+        return if (risk == 0) 9 else risk
+    }
 
     while (queue.isNotEmpty()) {
         val pos = queue.poll()
@@ -36,15 +53,18 @@ fun part1(input: List<String>): Int {
             val dX = pos.x + x[i]
             val dY = pos.y + y[i]
 
-            if (dY == map.size - 1 && dX == map[0].size - 1) {
-                return distance + map[dY][dX] - map[0][0]
+            if (dY == distanceMap.size - 1 && dX == distanceMap[0].size - 1) {
+                return distance + calculateRisk(dY, dX) - map[0][0]
             }
 
-            map.getOrNull(dY)?.getOrNull(dX)?.let {
-                if (checked[dY][dX] == 0) {
-                    if (pos.distance >= checked[dY][dX] + it) {
-                        checked[dY][dX] = pos.distance + it
-                        queue.add(Position(dX, dY, pos.distance + it))
+            distanceMap.getOrNull(dY)?.getOrNull(dX)?.let {
+                if (it == 0) {
+                    val risk = calculateRisk(dY, dX)
+
+                    if (pos.distance >= distanceMap[dY][dX] + risk) {
+                        riskMap[dY][dX] = risk
+                        distanceMap[dY][dX] = pos.distance + risk
+                        queue.add(Position(dX, dY, distanceMap[dY][dX]))
                     }
                 }
             }
