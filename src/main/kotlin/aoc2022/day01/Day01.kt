@@ -25,4 +25,4 @@ fun chunk(lines: List<String>): List<List<Int>> =
             chunks.last().add(items.toInt())
         }
         chunks
-    }.toList()
+    }
