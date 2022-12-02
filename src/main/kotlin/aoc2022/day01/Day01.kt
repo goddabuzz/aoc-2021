@@ -18,7 +18,7 @@ fun part2(elfs: List<List<Int>>): Int = elfs.map { it.sumOf { i: Int -> i } }.so
 fun part1(elfs: List<List<Int>>): Int = elfs.maxOf { ints: List<Int> -> ints.sumOf { i: Int -> i } }
 
 fun chunk(lines: List<String>): List<List<Int>> =
-    lines.fold(mutableListOf(mutableListOf())) { chunks: MutableList<MutableList<Int>>, items ->
+    lines.fold(mutableListOf(mutableListOf<Int>())) { chunks, items ->
         if (items.isBlank()) {
             chunks.add(mutableListOf())
         } else {
