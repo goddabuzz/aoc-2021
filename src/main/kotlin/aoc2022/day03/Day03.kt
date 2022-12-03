@@ -5,7 +5,7 @@ import result
 
 fun main() {
 
-    val testInput = readInput(2022,"day03/Day03_test")
+    val testInput = readInput(2022, "day03/Day03_test")
     result(part1(testInput), 157)
 
     val input = readInput(2022, "day03/Day03")
@@ -15,19 +15,12 @@ fun main() {
     result(part2(input), 2569)
 }
 
-
-fun part1(input: List<String>): Int {
-    return input.sumOf {
-        val compartmentLength = it.length / 2
-        val left = it.take(compartmentLength)
-        val right = it.takeLast(compartmentLength)
-
-        val v = left.first { c -> right.contains(c) }
-        v.code - (if (v.isLowerCase()) 96 else 38)
-    }
+fun part1(input: List<String>): Int = input.sumOf {
+    val (left, right) = it.chunked(it.length / 2)
+    val v = left.first { c -> right.contains(c) }
+    v.code - (if (v.isLowerCase()) 96 else 38)
 }
-fun part2(input: List<String>): Int {
-    return input.windowed(3, 3)
-        .map { it.first().first { c: Char -> it[1].contains(c) && it[2].contains(c) } }
-        .sumOf { it.code - (if (it.isLowerCase()) 96 else 38); }
-}
+
+fun part2(input: List<String>): Int = input.windowed(3, 3)
+    .map { it.first().first { c: Char -> it[1].contains(c) && it[2].contains(c) } }
+    .sumOf { it.code - (if (it.isLowerCase()) 96 else 38); }
