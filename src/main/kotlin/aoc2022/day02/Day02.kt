@@ -13,25 +13,29 @@ fun main() {
     result(part2(p1), 13490)
 }
 
-fun part1(lines: List<String>): Int {
-    return lines.map { it.split(" ") }.sumOf(::match1)
+enum class Play(val opponent: String, val player: String, val weight: Int) {
+    ROCK("A", "X", 1),
+    PAPER("B", "Y", 2),
+    SCISSORS("C", "Z", 3)
 }
-fun match1(input: List<String>): Int {
+
+fun part1(lines: List<String>): Int {
     val win = listOf(listOf("A", "Y"), listOf("B", "Z"), listOf("C", "X"))
     val draw = listOf(listOf("A", "X"), listOf("B", "Y"), listOf("C", "Z"))
 
-    var score = when (input[1]) {
-        Play.ROCK.player -> Play.ROCK.weight
-        Play.PAPER.player -> Play.PAPER.weight
-        else -> {
-            Play.SCISSORS.weight
+    return lines.map { it.split(" ") }.sumOf { line ->
+        var score = when (line[1]) {
+            Play.ROCK.player -> Play.ROCK.weight
+            Play.PAPER.player -> Play.PAPER.weight
+            else -> {
+                Play.SCISSORS.weight
+            }
         }
+
+        if (win.any { it == line }) score += 6
+        if (draw.any { it == line }) score += 3
+        score
     }
-
-    if (win.any { it == input }) score += 6
-    if (draw.any { it == input }) score += 3
-
-    return score
 }
 
 fun part2(lines: List<String>): Int {
@@ -47,10 +51,4 @@ fun part2(lines: List<String>): Int {
             else -> 6 + win[x]!!
         }
     }
-}
-
-enum class Play(val opponent: String, val player: String, val weight: Int) {
-    ROCK("A", "X", 1),
-    PAPER("B", "Y", 2),
-    SCISSORS("C", "Z", 3)
 }
