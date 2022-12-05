@@ -8,9 +8,10 @@ fun main() {
     val p1 = readInput(2022, "day02/Day02")
 
     result(part1(t1), 15)
-    result(part1(p1), 17189)
     result(part2(t1), 12)
-    result(part2(p1), 13490)
+
+    println(part1(p1))
+    println(part2(p1))
 }
 
 enum class Play(val opponent: String, val player: String, val weight: Int) {

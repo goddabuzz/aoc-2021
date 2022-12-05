@@ -7,12 +7,11 @@ fun main() {
 
     val testInput = readInput(2022, "day03/Day03_test")
     result(part1(testInput), 157)
+    result(part2(testInput), 70)
 
     val input = readInput(2022, "day03/Day03")
-    result(part1(input), 7763)
-
-    result(part2(testInput), 70)
-    result(part2(input), 2569)
+    println(part1(input))
+    println(part2(input))
 }
 
 fun part1(input: List<String>): Int = input.sumOf {

@@ -8,9 +8,10 @@ fun main() {
     val p1 = readInput(2022, "day01/Day01");
 
     result(part1(chunk(t1)), 24000)
-    result(part1(chunk(p1)), 67658)
     result(part2(chunk(t1)), 45000)
-    result(part2(chunk(p1)), 200158)
+
+    println(part1(chunk(p1)))
+    println(part2(chunk(p1)))
 }
 
 fun part2(elfs: List<List<Int>>): Int = elfs.map { it.sumOf { i: Int -> i } }.sorted().takeLast(3).sum()

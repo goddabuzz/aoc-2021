@@ -12,7 +12,7 @@ fun readInput(year: Int, name: String) = File("src/main/kotlin/aoc$year", "$name
  */
 fun String.md5(): String = BigInteger(1, MessageDigest.getInstance("MD5").digest(toByteArray())).toString(16)
 
-fun result(result: Int, expected: Int) {
+fun <T> result(result: T, expected: T) {
     println(result)
     check(result == expected)
 }

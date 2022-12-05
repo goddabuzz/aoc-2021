@@ -11,8 +11,8 @@ fun main() {
     result(part2(testInput), 4)
 
     val input = readInput(2022, "day04/Day04")
-    result(part1(input), 500)
-    result(part2(input), 0)
+    println(part1(input))
+    println(part2(input))
 }
 fun range(input: List<String>): List<List<IntRange>> = input.map { range ->
     range.split(",").map {
