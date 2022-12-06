@@ -5,11 +5,11 @@ import result
 import resultLong
 
 fun main() {
-    result(part1(readInput(2021, "day10/Day10_test")), 26397)
-    result(part1(readInput(2021, "day10/Day10")), 318081)
+    result(part1(readInput(2021, 10, true)), 26397)
+    result(part1(readInput(2021, 10)), 318081)
 
-    resultLong(part2(readInput(2021, "day10/Day10_test")), 288957)
-    resultLong(part2(readInput(2021, "day10/Day10")), 4361305341)
+    resultLong(part2(readInput(2021, 10, true)), 288957)
+    resultLong(part2(readInput(2021, 10)), 4361305341)
 }
 
 fun part1(input: List<String>): Int {

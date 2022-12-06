@@ -68,11 +68,11 @@ fun main() {
         return grouped.toList().sumOf { it.second }
     }
 
-    val testInput = readInput(2021, "day06/Day06_test")
+    val testInput = readInput(2021, 6)
     result(part1(testInput, 80), 5934)
     resultLong(part2(testInput, 256), 26984457539)
 
-    val input = readInput(2021, "day06/Day06")
+    val input = readInput(2021, 6)
     result(part1(input, 80), 365131)
     resultLong(part2(input, 256), 1650309278600)
 }

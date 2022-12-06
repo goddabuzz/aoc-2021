@@ -6,12 +6,12 @@ import java.util.*
 
 fun main() {
     // p1
-    result(solve(readInput(2021, "Day15/Day15_test"), 1), 40)
-    result(solve(readInput(2021, "Day15/Day15"), 1), 595)
+    result(solve(readInput(2021, 15, true), 1), 40)
+    println(solve(readInput(2021, 15), 1))
 
     // p2
-    result(solve(readInput(2021, "Day15/Day15_test"), 5), 315)
-    result(solve(readInput(2021, "Day15/Day15"), 5), 595)
+    result(solve(readInput(2021, 15, true), 5), 315)
+    println(solve(readInput(2021, 15), 5))
 }
 
 data class Position(val x: Int, val y: Int, var distance: Int) : Comparable<Position> {

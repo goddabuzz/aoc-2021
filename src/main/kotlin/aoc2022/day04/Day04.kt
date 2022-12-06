@@ -5,12 +5,12 @@ import result
 
 fun main() {
 
-    val testInput = readInput(2022,"day04/Day04_test")
+    val testInput = readInput(2022,4, true)
 
     result(part1(testInput), 2)
     result(part2(testInput), 4)
 
-    val input = readInput(2022, "day04/Day04")
+    val input = readInput(2022, 4)
     println(part1(input))
     println(part2(input))
 }

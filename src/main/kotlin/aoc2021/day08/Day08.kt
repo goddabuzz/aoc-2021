@@ -12,9 +12,9 @@ fun main() {
     }
 
 
-    val testInput = readInput(2021, "day08/Day08_test")
+    val testInput = readInput(2021, 8)
     result(part1(testInput), 26)
 
-    val input = readInput(2021, "day08/Day08")
+    val input = readInput(2021, 8)
     result(part1(input), 294)
 }

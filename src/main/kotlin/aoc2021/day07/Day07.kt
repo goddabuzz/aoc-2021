@@ -33,11 +33,11 @@ fun main() {
         return min / 2
     }
 
-    val testInput = readInput(2021, "day07/Day07_test")[0].split(",").map { it.toInt() }
+    val testInput = readInput(2021, 7)[0].split(",").map { it.toInt() }
     result(part1(testInput), 37)
     result(part2(testInput), 168)
 
-    val input = readInput(2021, "day07/Day07")[0].split(",").map { it.toInt() }
+    val input = readInput(2021, 7)[0].split(",").map { it.toInt() }
     result(part1(input), 340987)
     result(part2(input), 96987874)
 }

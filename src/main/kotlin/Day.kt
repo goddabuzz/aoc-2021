@@ -1,12 +1,12 @@
 fun main() {
 
-    val testInput = readInput(2022,"day01/Day01_test").map { it.toInt() }
+    val testInput = readInput(2022,1, true).map { it.toInt() }
     result(part1(testInput), 0)
     result(part2(testInput), 0)
 
-    val input = readInput(2022, "day01/Day01").map { it.toInt() }
-    result(part1(input), 0)
-    result(part2(input), 0)
+    val input = readInput(2022, 1).map { it.toInt() }
+    println(part1(input))
+    println(part2(input))
 }
 
 fun part1(input: List<Int>): Int {

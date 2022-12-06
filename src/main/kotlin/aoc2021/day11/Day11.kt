@@ -5,10 +5,10 @@ import result
 
 fun main() {
 
-    result(part1(readInput(2021, "day11/Day11_test")), 1656)
-    result(part1(readInput(2021, "day11/Day11")), 1591)
-    result(part2(readInput(2021, "day11/Day11_test")), 195)
-    result(part2(readInput(2021, "day11/Day11")), 314)
+    result(part1(readInput(2021, 11, true)), 1656)
+    result(part1(readInput(2021, 11)), 1591)
+    result(part2(readInput(2021, 11, true)), 195)
+    result(part2(readInput(2021, 11)), 314)
 }
 
 data class Octopus(val x: Int, val y: Int, var e: Int, var f: Boolean = false)

@@ -54,11 +54,11 @@ fun main() {
         return oxygen * co2
     }
 
-    val testInput = readInput(2021, "day03/Day03_test")
+    val testInput = readInput(2021, 3)
     result(part1(testInput), 198)
     result(part2(testInput), 230)
 
-    val input = readInput(2021, "day03/Day03")
+    val input = readInput(2021, 3)
     result(part1(input), 693486)
     result(part2(input), 3379326)
 }

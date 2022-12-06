@@ -5,11 +5,11 @@ import result
 
 fun main() {
 
-    val testInput = readInput(2022, "day03/Day03_test")
+    val testInput = readInput(2022, 3, true)
     result(part1(testInput), 157)
     result(part2(testInput), 70)
 
-    val input = readInput(2022, "day03/Day03")
+    val input = readInput(2022, 3)
     println(part1(input))
     println(part2(input))
 }

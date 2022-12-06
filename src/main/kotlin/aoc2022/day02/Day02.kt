@@ -4,8 +4,8 @@ import readInput
 import result
 
 fun main() {
-    val t1 = readInput(2022, "day02/Day02_test")
-    val p1 = readInput(2022, "day02/Day02")
+    val t1 = readInput(2022, 2, true)
+    val p1 = readInput(2022, 2)
 
     result(part1(t1), 15)
     result(part2(t1), 12)

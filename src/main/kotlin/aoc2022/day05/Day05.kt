@@ -5,11 +5,11 @@ import result
 
 fun main() {
 
-    val testInput = readInput(2022, "day05/Day05_test")
+    val testInput = readInput(2022, 5, true)
     result(part1(testInput), "CMZ")
     result(part2(testInput), "MCD")
 
-    val input = readInput(2022, "day05/Day05")
+    val input = readInput(2022, 5)
     println(part1(input))
     println(part2(input))
 }
@@ -45,6 +45,4 @@ fun part1(input: List<String>, topFirst : Boolean = true): String {
     return st.joinToString("") { it[0] }
 }
 
-fun part2(input: List<String>): String {
-    return part1(input, false)
-}
+fun part2(input: List<String>): String = part1(input, false)

@@ -5,11 +5,11 @@ import result
 
 fun main() {
 
-    result(part1(f(readInput(2021, "day09/Day09_test"))), 15)
-    result(part2(f(readInput(2021, "day09/Day09_test"))), 1134)
+    result(part1(f(readInput(2021, 9))), 15)
+    result(part2(f(readInput(2021, 9))), 1134)
 
-    result(part1(f(readInput(2021, "day09/Day09"))), 423)
-    result(part2(f(readInput(2021, "day09/Day09"))), 1198704)
+    result(part1(f(readInput(2021, 9))), 423)
+    result(part2(f(readInput(2021, 9))), 1198704)
 }
 
 fun f(input: List<String>) = input.map { it.split("").filter { p -> p.isNotEmpty() }.map { p -> p.toInt() } }

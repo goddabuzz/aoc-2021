@@ -1,11 +1,19 @@
 import java.io.File
 import java.math.BigInteger
 import java.security.MessageDigest
+import java.util.*
 
 /**
  * Reads lines from the given input txt file.
  */
-fun readInput(year: Int, name: String) = File("src/main/kotlin/aoc$year", "$name.txt").readLines()
+fun readInput(year: Int, day: Int, test: Boolean = false): List<String> {
+    val dayText = "Day" + ("$day".padStart(2, '0'))
+    val testText = if (test) "_test" else ""
+
+    return File(
+        "src/main/kotlin/aoc$year",
+        "${dayText.lowercase(Locale.getDefault())}/$dayText${testText}.txt").readLines()
+}
 
 /**
  * Converts string to md5 hash.

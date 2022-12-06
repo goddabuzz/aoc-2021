@@ -4,8 +4,8 @@ import readInput
 import result
 
 fun main() {
-    result(part1(readInput(2021, "Day12/Day12_test")), 226)
-    result(part1(readInput(2021, "Day12/Day12")), 5178)
+    result(part1(readInput(2021, 12, true)), 226)
+    result(part1(readInput(2021, 12)), 5178)
 }
 
 fun part1(input: List<String>): Int {

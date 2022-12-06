@@ -4,8 +4,8 @@ import readInput
 import result
 
 fun main() {
-    val t1 = readInput(2022, "day01/Day01_test")
-    val p1 = readInput(2022, "day01/Day01");
+    val t1 = readInput(2022, 1, true)
+    val p1 = readInput(2022, 1);
 
     result(part1(chunk(t1)), 24000)
     result(part2(chunk(t1)), 45000)

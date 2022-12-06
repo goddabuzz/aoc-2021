@@ -6,8 +6,8 @@ import result
 fun main() {
 
     // Part 1 = 2
-    result(part1(readInput(2021, "day13/Day13_test")), 16)
-    result(part1(readInput(2021, "day13/Day13")), 95)
+    result(part1(readInput(2021, 13, true)), 16)
+    result(part1(readInput(2021, 13)), 95)
 }
 data class Point(val x: Int, val y: Int)
 

@@ -81,11 +81,11 @@ fun main() {
         return map.sumOf { it.count { p -> p.value >= 2 } }
     }
 
-    val testInput = readInput(2021, "day05/Day05_test")
+    val testInput = readInput(2021, 5)
     result(part1(testInput), 5)
     result(part2(testInput), 12)
 
-    val input = readInput(2021, "day05/Day05")
+    val input = readInput(2021, 5)
     result(part1(input), 7436)
     result(part2(input), 21104)
 }

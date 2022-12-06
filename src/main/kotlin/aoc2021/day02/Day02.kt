@@ -36,11 +36,11 @@ fun main() {
         return depth * forward
     }
 
-    val testInput = readInput(2021, "day02/Day02_test")
+    val testInput = readInput(2021, 2, true)
     result(part1(testInput), 150)
     result(part2(testInput), 900)
 
-    val input = readInput(2021, "day02/Day02")
-    result(part1(input), 1728414)
-    result(part2(input), 1765720035)
+    val input = readInput(2021, 2)
+    println(part1(input))
+    println(part2(input))
 }
