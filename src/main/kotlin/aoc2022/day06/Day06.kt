@@ -14,12 +14,8 @@ fun main() {
     println(part2(input))
 }
 
-fun validate(input: List<String>, length: Int): Int = input[0].windowed(length)
-    .indexOfFirst {
-        it.sumOf { c: Char -> it.count {
-                s -> c == s}
-        } == length
-    } + length
+fun validate(input: List<String>, length: Int): Int =
+    input[0].windowed(length).indexOfFirst { it.toSet().size == length } + length
 
 fun part1(input: List<String>) = validate(input, 4)
 fun part2(input: List<String>) = validate(input, 14)
