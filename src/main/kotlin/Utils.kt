@@ -29,3 +29,17 @@ fun resultLong(result: Long, expected: Long) {
     println(result)
     check(result == expected)
 }
+
+fun <T> chunk(lines: List<T>, predicate: (item: T) -> Boolean): List<List<T>> =
+    lines.fold(mutableListOf(mutableListOf<T>())) { chunks, items ->
+        if (predicate(items)) {
+            chunks.add(mutableListOf())
+        } else {
+            chunks.last().add(items)
+        }
+        chunks
+    }
+
+fun predicate(items: String) {
+
+}
